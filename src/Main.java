@@ -16,10 +16,6 @@ import java.util.Scanner;
 public class Main {
 	
 	public static void main(String[] args) {
-		String[] refArray = new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
-				"K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
-				"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-				"(", ")", "*", "+", ",", "-", ".", "/",};
 		
 		Scanner input = new Scanner(System.in);
 		System.out.println("\nEnter key and phrase: ");
@@ -32,6 +28,19 @@ public class Main {
 		str = str.toUpperCase();
 		String output = "";
 		
-		new encoder(refArray, key, keyIndex, str, output);
+		// Decode or encode
+		System.out.println("\nDecode or encode? (d/e)");
+		String choice = input.nextLine();
+		choice = choice.toLowerCase();
+		
+		if (choice.equals("d")) {
+				decoder decoder = new decoder(key, keyIndex, str, output);
+			} else if (choice.equals("e")) {
+				encoder encoder = new encoder(key, keyIndex, str, output);
+			} else {
+				System.out.println("Invalid choice");
+				System.exit(1);
+			}
+		
 	}
 }
