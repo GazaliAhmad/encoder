@@ -1,6 +1,6 @@
 import org.jetbrains.annotations.NotNull;
-import java.util.Arrays;
 import static java.lang.System.out;
+import static java.util.Arrays.asList;
 
 public class encoder {
 	encoder(@NotNull String key, int keyIndex, String str, String output) {
@@ -9,9 +9,8 @@ public class encoder {
 				"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
 				"(", ")", "*", "+", ",", "-", ".", "/",};
 		
-		if (key.matches(("^[A-Z0-9()*+,-./]$"))) {
-			keyIndex = Arrays.asList(refArray).indexOf(key);
-		} else {
+		if (key.matches(("^[A-Z0-9()*+,-./]$"))) keyIndex = asList(refArray).indexOf(key);
+		else {
 			out.println("Invalid key");
 			System.exit(1);
 		}
@@ -22,7 +21,7 @@ public class encoder {
 		StringBuilder outputBuilder = new StringBuilder(output);
 		for (int j = 0; j < str.length(); j++) {
 			if (str.charAt(j) == ' ') outputBuilder.append(" ");
-			else outputBuilder.append(refArray[Arrays.asList(rotatedArray).indexOf(str.substring(j, j + 1))]);
+			else outputBuilder.append(refArray[asList(rotatedArray).indexOf(str.substring(j, j + 1))]);
 		}
 		
 		output = outputBuilder.toString();
