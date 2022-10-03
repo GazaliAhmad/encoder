@@ -9,8 +9,9 @@ public class encoder {
 				"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
 				"(", ")", "*", "+", ",", "-", ".", "/",};
 		
-		if (key.matches("^[A-Z0-9()*+,-./]$")) keyIndex = Arrays.asList(refArray).indexOf(key);
-		else {
+		if (key.matches(("^[A-Z0-9()*+,-./]$"))) {
+			keyIndex = Arrays.asList(refArray).indexOf(key);
+		} else {
 			out.println("Invalid key");
 			System.exit(1);
 		}
