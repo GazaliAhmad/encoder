@@ -34,9 +34,9 @@ public class Main {
 		choice = choice.toLowerCase();
 		
 		if (choice.equals("d")) {
-				decoder decoder = new decoder(key, keyIndex, str, output);
+			new decoder(key, keyIndex, str, output);
 			} else if (choice.equals("e")) {
-				encoder encoder = new encoder(key, keyIndex, str, output);
+			new encoder(key, keyIndex, str, output);
 			} else {
 				System.out.println("Invalid choice");
 				System.exit(1);

@@ -28,4 +28,4 @@ public class decoder {
 		System.out.println("\nDecoded: " + output);
 		}
 	}
-
+	
