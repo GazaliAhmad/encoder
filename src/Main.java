@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 /*
 	Get input from user. First character is the key to shift the alphabet by.
@@ -20,39 +21,48 @@ public class Main {
 		String[] refArray = new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
 				"K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
 				"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-				"(", ")", "*", "+", ",", "-", ".", "/"};
+				"(", ")", "*", "+", ",", "-", ".", "/",};
 		
-		System.out.println("\nRefTable:\n " + Arrays.toString(refArray));
+		// System.out.println("RefArray: " + refArray.length);
+		// System.out.println("\nRefTable:\n " + Arrays.toString(refArray));
 		
-		String key = "F";
+		// Get input from user
+		// First character is the key to shift the alphabet by
+		// Second character is the string to be encoded
+		
+		Scanner input = new Scanner(System.in);
+		System.out.println("\nEnter key and phrase: ");
+		String phrase = input.nextLine();
+		
+		// Grab the key and phrase from the input
+		String key = phrase.substring(0, 1);
 		key = key.toUpperCase();
-		int keyIndex;
-		
-		String input = "This is (the world) that we live in and I love it 3000";
-		input = input.toUpperCase();
+		int keyIndex = 0;
+		String str = phrase.substring(1);
+		str = str.toUpperCase();
 		String output = "";
-		System.out.println("\nInput: " + input);
+		
+		// System.out.println("\nKey: " + key);
+		// System.out.println("Phrase: " + str);
+		
+		// key is the index of the character in the refArray
 		
 		if (key.matches(("^[A-Z0-9()*+,-./]$"))) {
 			keyIndex = Arrays.asList(refArray).indexOf(key);
-			System.out.println("\nKey: " + key + " KeyIndex: " + keyIndex);
-			String[] rotatedArray = new String[refArray.length];
-			for (int i = 0; i < refArray.length; i++) {
-				rotatedArray[i] = refArray[(i + keyIndex) % refArray.length];
-			}
-				for (int j = 0; j < input.length(); j++) {
-					if (input.charAt(j) == ' ') {
-						output += " ";
-					}
-					if (input.charAt(j) != ' ') {
-						int index = Arrays.asList(rotatedArray).indexOf(input.charAt(j) + "");
-						output += refArray[index];
-					}
-				}
-				System.out.println("\nOutput: " + output);
+		} else {
+			System.out.println("Invalid key");
+		}
+		String[] rotatedArray = new String[refArray.length];
+		for (int i = 0; i < refArray.length; i++) {
+			rotatedArray[i] = refArray[(i + keyIndex) % refArray.length];
+		}
+		for (int j = 0; j < str.length(); j++) {
+			if (str.charAt(j) == ' ') {
+				output += " ";
+			} else {
+				output += refArray[Arrays.asList(rotatedArray).indexOf(str.substring(j, j + 1))];
 			}
 		}
+		System.out.println("\nEncoded: " + output);
 	}
-	
-
-
+}
