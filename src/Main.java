@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import static java.lang.System.out;
 /*
 	Get input from user. First character is the key to shift the alphabet by.
 	Second character is the string to be encoded.
@@ -18,7 +19,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Scanner input = new Scanner(System.in);
-		System.out.println("\nEnter key and phrase: ");
+		out.println("\nEnter key and phrase: ");
 		String phrase = input.nextLine();
 		
 		String key = phrase.substring(0, 1);
@@ -29,18 +30,15 @@ public class Main {
 		String output = "";
 		
 		// Decode or encode
-		System.out.println("\nDecode or encode? (d/e)");
+		out.println("\nDecode or encode? (d/e)");
 		String choice = input.nextLine();
 		choice = choice.toLowerCase();
 		
-		if (choice.equals("d")) {
-			new decoder(key, keyIndex, str, output);
-			} else if (choice.equals("e")) {
-			new encoder(key, keyIndex, str, output);
-			} else {
-				System.out.println("Invalid choice");
-				System.exit(1);
-			}
-		
+		if (choice.equals("d")) new decoder(key, keyIndex, str, output);
+		else if (choice.equals("e")) new encoder(key, keyIndex, str, output);
+		else {
+			out.println("Invalid choice");
+			System.exit(1);
+		}
 	}
 }
