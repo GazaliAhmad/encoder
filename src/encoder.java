@@ -1,4 +1,5 @@
 import org.jetbrains.annotations.NotNull;
+
 import static java.lang.System.err;
 import static java.lang.System.out;
 import static java.util.Arrays.asList;
@@ -6,6 +7,7 @@ import static java.util.Arrays.asList;
 public class encoder {
 	
 	encoder(@NotNull String key, int keyIndex, String str, String output) {
+		
 		var refTable = new refTable();
 		String[] refArray = refTable.getRefArray();
 		
@@ -14,6 +16,7 @@ public class encoder {
 			err.println("Invalid key");
 			System.exit(1);
 		}
+		
 		
 		String[] rotatedArray = new String[refArray.length];
 		for (int i = 0; i < refArray.length; i++) rotatedArray[i] = refArray[(i + keyIndex) % refArray.length];

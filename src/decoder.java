@@ -1,9 +1,12 @@
 import org.jetbrains.annotations.NotNull;
+
 import java.util.Arrays;
+
 import static java.lang.System.err;
 import static java.lang.System.out;
 
 public class decoder {
+	
 	decoder(@NotNull String key, int keyIndex, String str, String output) {
 		var refTable = new refTable();
 		String[] refArray = refTable.getRefArray();

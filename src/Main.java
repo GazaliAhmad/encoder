@@ -28,17 +28,27 @@ public class Main {
 		int keyIndex = 0;
 		String str = phrase.substring(1);
 		str = str.toUpperCase();
+		if (!str.matches(("^[A-Z0-9()*+,-./ ]+$"))) {
+			err.print("\nInvalid string!");
+			err.print("\nString must only contain A-Z, 0-9, and the following characters: ()*+,-./");
+			System.exit(1);
+		}
+		if (str.charAt(0) == ' ') {
+			err.print("\nInvalid string!");
+			err.print("\nString must not start with a space");
+			System.exit(1);
+		}
 		String output = "";
 		
 		// Decode or encode
-		out.println("\nDecode or encode? (d/e)");
+		out.print("\nDecode or encode? (d/e)");
 		String choice = input.nextLine();
 		choice = choice.toLowerCase();
 		
 		if (choice.equals("d")) new decoder(key, keyIndex, str, output);
 		else if (choice.equals("e")) new encoder(key, keyIndex, str, output);
 		else {
-			err.println("Invalid choice");
+			err.print("\nInvalid choice");
 			System.exit(1);
 		}
 	}
