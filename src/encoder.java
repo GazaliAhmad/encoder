@@ -3,11 +3,11 @@ import static java.lang.System.out;
 import static java.util.Arrays.asList;
 
 public class encoder {
+	// Get object from another class
+	
 	encoder(@NotNull String key, int keyIndex, String str, String output) {
-		var refArray = new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
-				"K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
-				"0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-				"(", ")", "*", "+", ",", "-", ".", "/",};
+		refTable refTable = new refTable();
+		String[] refArray = refTable.getRefArray();
 		
 		if (key.matches(("^[A-Z0-9()*+,-./]$"))) keyIndex = asList(refArray).indexOf(key);
 		else {
