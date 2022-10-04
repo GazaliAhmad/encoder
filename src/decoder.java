@@ -1,15 +1,17 @@
 import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
+import static java.lang.System.err;
+import static java.lang.System.out;
 
 public class decoder {
 	decoder(@NotNull String key, int keyIndex, String str, String output) {
-		refTable refTable = new refTable();
+		var refTable = new refTable();
 		String[] refArray = refTable.getRefArray();
 		
 		if (key.matches(("^[A-Z0-9()*+,-./]$"))) {
 			keyIndex = Arrays.asList(refArray).indexOf(key);
 		} else {
-			System.out.println("Invalid key");
+			err.println("Invalid key");
 			System.exit(1);
 		}
 		
@@ -27,7 +29,7 @@ public class decoder {
 		}
 		
 		output = outputBuilder.toString();
-		System.out.println("\nDecoded: " + output);
+		out.println("\nDecoded: " + output);
 	}
 }
 	

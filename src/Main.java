@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import static java.lang.System.err;
 import static java.lang.System.out;
 /*
 	Get input from user. First character is the key to shift the alphabet by.
@@ -37,7 +38,7 @@ public class Main {
 		if (choice.equals("d")) new decoder(key, keyIndex, str, output);
 		else if (choice.equals("e")) new encoder(key, keyIndex, str, output);
 		else {
-			out.println("Invalid choice");
+			err.println("Invalid choice");
 			System.exit(1);
 		}
 	}
