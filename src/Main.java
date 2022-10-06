@@ -23,33 +23,33 @@ public class Main {
 		out.println("\nEnter key and phrase: ");
 		String phrase = input.nextLine();
 		
-		String key = phrase.substring(0, 1);
-		key = key.toUpperCase();
-		int keyIndex = 0;
-		String str = phrase.substring(1);
-		str = str.toUpperCase();
-		if (!str.matches(("^[A-Z0-9()*+,-./ ]+$"))) {
+		String key = phrase.substring(0, 1).toUpperCase();
+		String codePhrase = phrase.substring(1).toUpperCase();
+		
+		if (!codePhrase.matches(("^[A-Z0-9()*+,-./ ]+$"))) {
 			err.print("\nInvalid string!");
-			err.print("\nString must only contain A-Z, 0-9, and the following characters: ()*+,-./");
+			err.print("\nString to encode/decode must only contain A-Z, 0-9, and the following characters: ()* +,-./");
+			System.exit(1);
+		} else if (codePhrase.charAt(0) == ' ') {
+			err.print("\nInvalid string!");
+			err.print("\nString to encode/decode must not start with a space");
+			System.exit(1);
+		} else if (!key.matches(("^[A-Z0-9()*+,-./]$"))) {
+			err.print("\nInvalid key!");
+			err.print("\nKey must only contain A-Z, 0-9, and the following characters: ()*+,-./");
 			System.exit(1);
 		}
-		if (str.charAt(0) == ' ') {
-			err.print("\nInvalid string!");
-			err.print("\nString must not start with a space");
-			System.exit(1);
-		}
-		String output = "";
 		
-		// Decode or encode
-		out.print("\nDecode or encode? (d/e)");
-		String choice = input.nextLine();
-		choice = choice.toLowerCase();
+		out.println("\nEncode or decode? (e/d)");
+		String encodeDecode = input.nextLine();
 		
-		if (choice.equals("d")) new decoder(key, keyIndex, str, output);
-		else if (choice.equals("e")) new encoder(key, keyIndex, str, output);
-		else {
-			err.print("\nInvalid choice");
-			System.exit(1);
+		switch (encodeDecode) {
+			case "e" -> new encoder(key, codePhrase);
+			case "d" -> new decoder(key, codePhrase);
+			default -> {
+				err.print("\nInvalid input!");
+				err.print("\nPlease enter e or d");
+			}
 		}
 	}
 }
