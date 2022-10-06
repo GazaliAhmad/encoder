@@ -7,7 +7,7 @@ public class decoder {
 	
 	decoder(@NotNull String key, String codePhrase) {
 		
-		var refTable = new refTable();
+		final var refTable = new refTable();
 		String[] refArray = refTable.getRefArray();
 		int keyIndex = asList(refArray).indexOf(key);
 		
@@ -15,10 +15,9 @@ public class decoder {
 		for (int i = 0; i < refArray.length; i++) rotatedArray[i] = refArray[(i + keyIndex) % refArray.length];
 		
 		StringBuilder decodedText = new StringBuilder();
-		for (int j = 0; j < codePhrase.length(); j++) {
+		for (int j = 0; j < codePhrase.length(); j++)
 			if (codePhrase.charAt(j) == ' ') decodedText.append(" ");
 			else decodedText.append(rotatedArray[Arrays.asList(refArray).indexOf(codePhrase.substring(j, j + 1))]);
-		}
 		
 		out.println("\nDecoded: " + decodedText);
 	}

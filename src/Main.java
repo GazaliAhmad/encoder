@@ -26,7 +26,7 @@ public class Main {
 		String key = phrase.substring(0, 1).toUpperCase();
 		String codePhrase = phrase.substring(1).toUpperCase();
 		
-		if (!codePhrase.matches(("^[A-Z0-9()*+,-./ ]+$"))) {
+		if (!codePhrase.matches("^[A-Z0-9()*+,-./ ]+$")) {
 			err.print("\nInvalid string!");
 			err.print("\nString to encode/decode must only contain A-Z, 0-9, and the following characters: ()* +,-./");
 			System.exit(1);
@@ -34,7 +34,7 @@ public class Main {
 			err.print("\nInvalid string!");
 			err.print("\nString to encode/decode must not start with a space");
 			System.exit(1);
-		} else if (!key.matches(("^[A-Z0-9()*+,-./]$"))) {
+		} else if (!key.matches("^[A-Z0-9()*+,-./]$")) {
 			err.print("\nInvalid key!");
 			err.print("\nKey must only contain A-Z, 0-9, and the following characters: ()*+,-./");
 			System.exit(1);
