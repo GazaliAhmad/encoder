@@ -20,5 +20,7 @@ public class decoder {
 			else decodedText.append(rotatedArray[Arrays.asList(refArray).indexOf(codePhrase.substring(j, j + 1))]);
 		
 		out.println("\nDecoded: " + decodedText);
+		out.println("\nThank you for using a simple Caesar Cipher Encoder/Decoder!");
+		System.exit(0);
 	}
 }

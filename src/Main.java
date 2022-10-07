@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 import static java.lang.System.err;
 import static java.lang.System.out;
 /*
@@ -26,6 +27,8 @@ public class Main {
 		String key = phrase.substring(0, 1).toUpperCase();
 		String codePhrase = phrase.substring(1).toUpperCase();
 		
+		
+		
 		if (!codePhrase.matches("^[A-Z0-9()*+,-./ ]+$")) {
 			err.print("\nInvalid string!");
 			err.print("\nString to encode/decode must only contain A-Z, 0-9, and the following characters: ()* +,-./");
@@ -40,16 +43,22 @@ public class Main {
 			System.exit(1);
 		}
 		
-		out.println("\nEncode or decode? (e/d)");
-		String encodeDecode = input.nextLine();
+		out.println("\nEncode or decode (q to Quit, r to Re-enter text) ? (e/d)");
 		
-		switch (encodeDecode) {
-			case "e" -> new encoder(key, codePhrase);
-			case "d" -> new decoder(key, codePhrase);
-			default -> {
-				err.print("\nInvalid input!");
-				err.print("\nPlease enter e or d");
-			}
+		@SuppressWarnings("ReassignedVariable") var choice = input.nextLine().toLowerCase();
+		if (!choice.equals("q")) {
+			do {
+				switch (choice) {
+					case "e" -> new encoder(key, codePhrase);
+					case "d" -> new decoder(key, codePhrase);
+					case "r" -> main(args);
+					default -> {
+						err.print("\nInvalid choice!");
+						out.print("\nEncode or decode (q to Quit, r to Re-enter text) ? (e/d)");
+					}
+				}
+				choice = input.nextLine().toLowerCase();
+			} while (!choice.equals("q"));
 		}
 	}
 }

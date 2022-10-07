@@ -1,4 +1,5 @@
 import org.jetbrains.annotations.NotNull;
+
 import static java.lang.System.out;
 import static java.util.Arrays.asList;
 
@@ -17,7 +18,12 @@ public class encoder {
 		for (int j = 0; j < codePhrase.length(); j++)
 			if (codePhrase.charAt(j) == ' ') encodedText.append(" ");
 			else encodedText.append(refArray[asList(rotatedArray).indexOf(codePhrase.substring(j, j + 1))]);
-			
+		
 		out.println("\nEncoded: " + encodedText);
+		out.println("\nThank you for using a simple Caesar Cipher Encoder/Decoder!");
+		System.exit(0);
 	}
 }
+
+
+
