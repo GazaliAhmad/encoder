@@ -4,7 +4,7 @@ import static java.lang.System.exit;
 import static java.lang.System.out;
 import static java.util.Arrays.asList;
 
-public class decoder {
+final class decoder {
 	
 	@SuppressWarnings("ReassignedVariable")
 	decoder(@NotNull String key, String codePhrase) {

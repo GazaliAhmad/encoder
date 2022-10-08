@@ -18,12 +18,12 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		var input = new Scanner(System.in);
+		final var input = new Scanner(System.in);
 		out.println("\nEnter key and phrase: ");
-		var phrase = input.nextLine();
+		final var phrase = input.nextLine();
 		
-		var key = phrase.substring(0, 1).toUpperCase();
-		var codePhrase = phrase.substring(1).toUpperCase();
+		final var key = phrase.substring(0, 1).toUpperCase();
+		final var codePhrase = phrase.substring(1).toUpperCase();
 		
 		if (!codePhrase.matches("^[A-Z0-9()*+,-./ ]+$")) {
 			err.print("\nInvalid string!");

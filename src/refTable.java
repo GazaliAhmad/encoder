@@ -1,6 +1,6 @@
 import org.jetbrains.annotations.NotNull;
 
-public class refTable {
+final class refTable {
 	
 	String @NotNull [] getRefArray() {
 		return new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J",

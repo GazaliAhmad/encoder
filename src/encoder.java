@@ -3,7 +3,7 @@ import static java.lang.System.exit;
 import static java.lang.System.out;
 import static java.util.Arrays.asList;
 
-public class encoder {
+final class encoder {
 	
 	@SuppressWarnings("ReassignedVariable")
 	encoder(@NotNull String key, String codePhrase) {
