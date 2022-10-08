@@ -9,17 +9,17 @@ public class encoder {
 	encoder(@NotNull String key, String codePhrase) {
 		
 		final var refTable = new refTable();
-		var refArray = refTable.getRefArray();
-		var keyIndex = asList(refArray).indexOf(key);
+		final var refArray = refTable.getRefArray();
+		final var keyIndex = asList(refArray).indexOf(key);
+		final var rotatedArray = new String[refArray.length];
 		
-		var rotatedArray = new String[refArray.length];
 		var i = 0;
 		while (i < refArray.length) {
 			rotatedArray[i] = refArray[(i + keyIndex) % refArray.length];
 			i++;
 		}
 		
-		var encodedText = new StringBuilder();
+		final var encodedText = new StringBuilder();
 		var j = 0;
 		while (j < codePhrase.length()) {
 			if (codePhrase.charAt(j) == ' ') encodedText.append(" ");
