@@ -1,7 +1,5 @@
 import java.util.Scanner;
-
-import static java.lang.System.err;
-import static java.lang.System.out;
+import static java.lang.System.*;
 /*
 	Get input from user. First character is the key to shift the alphabet by.
 	Second character is the string to be encoded.
@@ -20,27 +18,25 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		Scanner input = new Scanner(System.in);
+		var input = new Scanner(System.in);
 		out.println("\nEnter key and phrase: ");
-		String phrase = input.nextLine();
+		var phrase = input.nextLine();
 		
-		String key = phrase.substring(0, 1).toUpperCase();
-		String codePhrase = phrase.substring(1).toUpperCase();
-		
-		
+		var key = phrase.substring(0, 1).toUpperCase();
+		var codePhrase = phrase.substring(1).toUpperCase();
 		
 		if (!codePhrase.matches("^[A-Z0-9()*+,-./ ]+$")) {
 			err.print("\nInvalid string!");
 			err.print("\nString to encode/decode must only contain A-Z, 0-9, and the following characters: ()* +,-./");
-			System.exit(1);
+			exit(1);
 		} else if (codePhrase.charAt(0) == ' ') {
 			err.print("\nInvalid string!");
 			err.print("\nString to encode/decode must not start with a space");
-			System.exit(1);
+			exit(1);
 		} else if (!key.matches("^[A-Z0-9()*+,-./]$")) {
 			err.print("\nInvalid key!");
 			err.print("\nKey must only contain A-Z, 0-9, and the following characters: ()*+,-./");
-			System.exit(1);
+			exit(1);
 		}
 		
 		out.println("\nEncode or decode (q to Quit, r to Re-enter text) ? (e/d)");
