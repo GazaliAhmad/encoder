@@ -5,21 +5,22 @@ import static java.util.Arrays.asList;
 
 public class encoder {
 	
+	@SuppressWarnings("ReassignedVariable")
 	encoder(@NotNull String key, String codePhrase) {
 		
 		final var refTable = new refTable();
 		var refArray = refTable.getRefArray();
-		int keyIndex = asList(refArray).indexOf(key);
+		var keyIndex = asList(refArray).indexOf(key);
 		
 		var rotatedArray = new String[refArray.length];
-		int i = 0;
+		var i = 0;
 		while (i < refArray.length) {
 			rotatedArray[i] = refArray[(i + keyIndex) % refArray.length];
 			i++;
 		}
 		
 		var encodedText = new StringBuilder();
-		int j = 0;
+		var j = 0;
 		while (j < codePhrase.length()) {
 			if (codePhrase.charAt(j) == ' ') encodedText.append(" ");
 			else encodedText.append(refArray[asList(rotatedArray).

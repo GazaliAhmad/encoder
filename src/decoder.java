@@ -6,6 +6,7 @@ import static java.util.Arrays.asList;
 
 public class decoder {
 	
+	@SuppressWarnings("ReassignedVariable")
 	decoder(@NotNull String key, String codePhrase) {
 		
 		final var refTable = new refTable();
@@ -13,14 +14,14 @@ public class decoder {
 		int keyIndex = asList(refArray).indexOf(key);
 		
 		var rotatedArray = new String[refArray.length];
-		int i = 0;
+		var i = 0;
 		while (i < refArray.length) {
 			rotatedArray[i] = refArray[(i + keyIndex) % refArray.length];
 			i++;
 		}
 		
 		var decodedText = new StringBuilder();
-		int j = 0;
+		var j = 0;
 		while (j < codePhrase.length()) {
 			if (codePhrase.charAt(j) == ' ') decodedText.append(" ");
 			else decodedText.append(rotatedArray[Arrays.asList(refArray).
